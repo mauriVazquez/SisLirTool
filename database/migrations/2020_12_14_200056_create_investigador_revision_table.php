@@ -15,8 +15,9 @@ class CreateInvestigadorRevisionTable extends Migration
     {
         Schema::create('investigador_revision', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('revison_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('revision_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained() ->onDelete('cascade');
+            $table->unique(array('revision_id','user_id'));
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateInvestigadorRevisionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_investigadorxrevision');
+        Schema::dropIfExists('investigador_revision');
     }
 }

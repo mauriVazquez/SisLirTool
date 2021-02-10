@@ -17,7 +17,7 @@ class CreatePreguntasDeInvestigacionTable extends Migration
             $table->id();
             $table->string('pregunta');
             $table->unsignedBigInteger('revision_id');
-            $table->foreign('revision_id')->references('id')->on('revisiones');
+            $table->foreign('revision_id')->references('id')->on('revisiones')->onDelete('cascade');
             $table->timestamps();
         });
     }

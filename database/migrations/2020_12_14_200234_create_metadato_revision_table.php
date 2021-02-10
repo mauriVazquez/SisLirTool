@@ -15,8 +15,8 @@ class CreateMetadatoRevisionTable extends Migration
     {
         Schema::create('metadato_revision', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('revison_id')->constrained();
-            $table->foreignId('metadato_id')->constrained();
+            $table->foreignId('revision_id')->constrained()->onDelete('cascade');
+            $table->foreignId('metadato_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateMetadatoRevisionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_metadatoxrevision');
+        Schema::dropIfExists('metadato_revision');
     }
 }

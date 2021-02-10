@@ -15,7 +15,7 @@ class CreateCriteriosTable extends Migration
     {
         Schema::create('criterios', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipo',['inclusion','exclusion','calidiad']);
+            $table->enum('tipo',['inclusion','exclusion','calidad']);
             $table->string('descripcion');
             $table->unsignedBigInteger('revision_id');
             $table->foreign('revision_id')->references('id')->on('revisiones');

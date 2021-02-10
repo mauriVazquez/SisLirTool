@@ -18,8 +18,12 @@ class CreateArticulosTable extends Migration
             $table->string('titulo');
             $table->boolean('leido');
             $table->string('archivo');
-            $table->string('formulario_de_extraccion');
-            $table->foreignId('revision_id')->constrained();
+            $table->json('formulario_de_extraccion');
+            $table->json('criterios');
+            $table->foreignId('revision_id')->constrained()->onDelete('cascade')->nullable();
+            $table->unsignedBigInteger('prueba_piloto_id')->nullable();
+            $table->foreign('prueba_piloto_id')->references('id')->on('pruebas_piloto')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateBibliotecaRevisionTable extends Migration
     {
         Schema::create('biblioteca_revision', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('revison_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('revision_id')->constrained()->onDelete('cascade');
+            $table->foreignId('biblioteca_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateBibliotecaRevisionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_bibliotecaxrevision');
+        Schema::dropIfExists('biblioteca_revision');
     }
 }
